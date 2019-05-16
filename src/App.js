@@ -12,11 +12,12 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      title: 'Kanban Board',
+      title: 'Stuff',
     };
   }
 
   componentDidMount() {
+    console.log(this.props);
     return this.props.loadCards();
   }
 

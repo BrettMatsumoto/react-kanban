@@ -41,7 +41,7 @@ passport.use(
     return new User({ username: username })
       .fetch()
       .then((user) => {
-        console.log(user);
+        // console.log(user);
 
         if (user === null) {
           return done(null, false, { message: 'bad username and password' });
@@ -60,20 +60,20 @@ passport.use(
         }
       })
       .catch((err) => {
-        console.log('error', err);
+        // console.log('error', err);
         return done(err);
       });
   }),
 );
 
 passport.serializeUser(function(user, done) {
-  console.log('serializing');
+  // console.log('serializing');
   return done(null, { id: user.id, username: user.username });
 });
 
 passport.deserializeUser(function(user, done) {
-  console.log('deserial');
-  console.log(user);
+  // console.log('deserial');
+  // console.log(user);
 
   return new User({ id: user.id }).fetch().then((user) => {
     user = user.toJSON();

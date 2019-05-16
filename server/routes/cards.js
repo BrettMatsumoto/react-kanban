@@ -6,14 +6,25 @@ const passport = require('passport');
 const Card = require('../database/models/Card');
 
 router.get('/', (req, res) => {
-  console.log('hi');
+  // console.log('hi');
   // return res.send('hi');
-  new Card().fetchAll({ withRelated: ['priorities', 'statuses', 'created_by', 'assigned_to'] }).then((results) => {
-    let resultsObj = results;
-    console.log(resultsObj);
-    return res.json(resultsObj);
-  }).catch((err) => {
-    console.log(err)
+  new Card()
+    .fetchAll({ withRelated: ['priorities', 'statuses', 'created_by', 'assigned_to'] })
+    .then((results) => {
+      let resultsObj = results;
+      // console.log(resultsObj);
+      return res.json(resultsObj);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+router.post('/', (req, res) => {
+  console.log('req', req);
+  return res.json({
+    title: req.body.title,
+    body: req.body.body,
   });
 });
 
@@ -48,7 +59,7 @@ router.delete('/:id', (req, res) => {
             return res.redirect(`/`);
           });
       } else {
-        return res.send('brah this aint yours');
+        return res.send('User does not own this Card');
       }
     });
 });
