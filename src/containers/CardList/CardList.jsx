@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from '../../components/Card';
+import './CardList.css';
 
 class CardList extends Component {
   constructor(props) {
@@ -16,9 +17,9 @@ class CardList extends Component {
       });
 
     return (
-      <>
+      <div id='board'>
         {cardList}
-      </>
+      </div>
     );
   }
 }
