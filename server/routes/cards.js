@@ -6,12 +6,14 @@ const passport = require('passport');
 const Card = require('../database/models/Card');
 
 router.get('/', (req, res) => {
-  // console.log('hi');
+  console.log('hi');
   // return res.send('hi');
   new Card().fetchAll({ withRelated: ['priorities', 'statuses', 'created_by', 'assigned_to'] }).then((results) => {
     let resultsObj = results;
-
+    console.log(resultsObj);
     return res.json(resultsObj);
+  }).catch((err) => {
+    console.log(err)
   });
 });
 

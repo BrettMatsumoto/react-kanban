@@ -1,10 +1,11 @@
 import React from 'react';
 
 const Card = (props) => {
+  const { title, body } = props;
   return (
     <div className="card">
-      <div />
-      <div />
+      <div>{title}</div>
+      <div>{body}</div>
     </div>
   );
 };

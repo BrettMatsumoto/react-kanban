@@ -5,7 +5,7 @@ export const LOAD_CARDS = 'LOAD_CARDS';
 
 export function addCard(newCard) {
   return (dispatch) => {
-    return fetch('/cards', {
+    return fetch('./api/cards', {
       method: 'POST',
       body: JSON.stringify(newCard),
       headers: {
@@ -26,8 +26,9 @@ export function addCard(newCard) {
 
 export const loadCards = () => {
   return (dispatch) => {
-    return fetch('/cards')
+    return fetch('./api/cards')
       .then((response) => {
+        console.log(response);
         return response.json();
       })
       .then((cards) => {

@@ -5,32 +5,19 @@ class CardList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      input: '',
-    };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
-
-  handleInputChange(e) {
-    const { value } = e.target;
-    this.setState({ input: value });
+    this.state = {};
   }
 
   render() {
-    const input = this.state.input;
-    const bookList = this.props.cards
-      .filter((card) => {
-        return card.title.toLowerCase().includes(input.toLowerCase());
-      })
+
+    const cardList = this.props.cards
       .map((card, idx) => {
-        return <Card key={idx} title={card.title} author={card.author} />;
+        return <Card key={idx} title={card.title} body={card.body} />;
       });
 
     return (
       <>
-        <input type="text" value={this.state.input} onChange={this.handleInputChange} />
-        {CardList}
+        {cardList}
       </>
     );
   }

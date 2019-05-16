@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import AddCard from './containers/AddCard';
 import CardList from './containers/CardList';
-import CardListTitle from './components/CardlistTitle';
+import CardListTitle from './components/CardListTitle';
 import { connect } from 'react-redux';
 import { loadCards } from './actions';
 

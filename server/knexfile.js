@@ -5,7 +5,7 @@ require('dotenv').config({ path: '../.env' });
 module.exports = {
   client: 'pg',
   connection: {
-    host: process.env.POSTGRES_HOST,
+    host: process.env.POSTGRES_HOSTNAME,
     database: process.env.POSTGRES_DB,
     port: process.env.POSTGRES_CONTAINER_PORT,
     user: process.env.POSTGRES_USER,
