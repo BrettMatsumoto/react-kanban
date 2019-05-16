@@ -24,7 +24,7 @@ export function addCard(newCard) {
   };
 }
 
-export const loadBooks = () => {
+export const loadCards = () => {
   return (dispatch) => {
     return fetch('/cards')
       .then((response) => {

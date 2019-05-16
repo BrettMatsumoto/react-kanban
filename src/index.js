@@ -8,7 +8,7 @@ import cardReducer from './reducers';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import { combineReducers, creaetStore, compose, applyMiddleware } from 'redux';
+import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 
 const composeEnhancers =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -17,7 +17,7 @@ const composeEnhancers =
       })
     : compose;
 
-const reducer = combineReducers({ bookReducer });
+const reducer = combineReducers({ cardReducer });
 const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(

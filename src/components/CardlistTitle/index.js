@@ -1,2 +1,2 @@
-import CardlistTitle from './CardlistTitle';
-export default CardlistTitle;
+import CardListTitle from './CardListTitle';
+export default CardListTitle;

@@ -3,6 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import AddCard from './containers/AddCard';
 import CardList from './containers/CardList';
+import CardListTitle from './components/CardlistTitle';
+import { connect } from 'react-redux';
+import { loadCards } from './actions';
 
 class App extends React.Component {
   constructor(props) {
