@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Card from '../../components/Card';
 import './CardList';
-import './CardListFunctions';
 
 class CardList extends Component {
   constructor(props) {
@@ -14,6 +13,7 @@ class CardList extends Component {
     const cardList = this.props.cards.map((card, idx) => {
       return <Card key={idx} title={card.title} body={card.body} />;
     });
+    // console.log(cardList)
 
     return (
       <div id="board">

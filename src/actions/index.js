@@ -15,11 +15,11 @@ export function addCard(newCard) {
       },
     })
       .then((response) => {
-        console.log('response: ', response);
+        // console.log('response: ', response);
         return response.json();
       })
       .then((body) => {
-        console.log('body: ', body);
+        // console.log('body: ', body);
         return dispatch({
           type: ADD_CARD,
           payload: body,
