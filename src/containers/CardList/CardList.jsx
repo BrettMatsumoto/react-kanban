@@ -10,17 +10,29 @@ class CardList extends Component {
   }
 
   render() {
-    const cardList = this.props.cards.map((card, idx) => {
-      return <Card key={idx} title={card.title} body={card.body} />;
+    const cardList1 = this.props.cards.map((card, idx) => {
+      // console.log(card);
+      if (card.status_id === 1) {
+        return <Card key={idx} title={card.title} body={card.body} status={card.status_id} />;
+      }
     });
-    // console.log(cardList)
+    const cardList2 = this.props.cards.map((card, idx) => {
+      if (card.status_id === 2) {
+        return <Card key={idx} title={card.title} body={card.body} status={card.status_id} />;
+      }
+    });
+    const cardList3 = this.props.cards.map((card, idx) => {
+      if (card.status_id === 3) {
+        return <Card key={idx} title={card.title} body={card.body} status={card.status_id} />;
+      }
+    });
 
     return (
       <div id="board">
-      {cardList}
-      <div id="Col1">Col1</div>
-        <div id="Col2">Col2</div>
-        <div id="Col3">Col3</div>
+        {/* {cardList} */}
+        <div id="Col1">{cardList1}</div>
+        <div id="Col2">{cardList2}</div>
+        <div id="Col3">{cardList3}</div>
       </div>
     );
   }
