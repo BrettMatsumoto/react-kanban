@@ -6,7 +6,7 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('cards').insert([
         {
-          title: 'Load node_modules',
+          title: 'Copy Github',
           body: 'load modules as needed',
           priority_id: 4,
           status_id: 2,

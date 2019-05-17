@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../database/knex');
-// const verify = require('../middleware/verify');
 const passport = require('passport');
 const Priority = require('../database/models/Priority');
 
@@ -27,9 +26,5 @@ router.get('/:id/edit', (req, res) => {
       return res.send(resultsObj);
     });
 });
-
-// router.get('/:id/edit', (req, res) => {
-//   return res.send('/api/users/:id/edit smoke test');
-// });
 
 module.exports = router;

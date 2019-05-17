@@ -1,18 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../database/knex');
-// const verify = require('../middleware/verify');
 const passport = require('passport');
 const Card = require('../database/models/Card');
 
 router.get('/', (req, res) => {
-  // console.log('hi');
-  // return res.send('hi');
   new Card()
     .fetchAll({ withRelated: ['priorities', 'statuses', 'created_by', 'assigned_to'] })
     .then((results) => {
       let resultsObj = results;
-      // console.log(resultsObj);
       return res.json(resultsObj);
     })
     .catch((err) => {
@@ -21,10 +17,31 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  // console.log('req', req);
+  new Card()
+    .save({
+      title: req.body.title,
+      body: req.body.body,
+      priority_id: req.body.priority,
+      status_id: req.body.status,
+      created_by: req.body.created_by,
+      assigned_to: req.body.assigned_to,
+    })
+    .then(() => {
+      return res.json({
+        title: req.body.title,
+        body: req.body.body,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   return res.json({
     title: req.body.title,
     body: req.body.body,
+    priority: req.body.priority,
+    status: req.body.status,
+    created_by: req.body.created_by,
+    assigned_to: req.body.assigned_to,
   });
 });
 
@@ -65,44 +82,3 @@ router.delete('/:id', (req, res) => {
 });
 
 module.exports = router;
-
-// router.get('/', (req, res) => {
-//   return res.json({ hi: 'test' });
-// });
-
-// router.get('/', (req, res) => {
-//   new Card()
-//     .fetchAll({
-//       withRelated: ['priorities', 'statuses', 'created_by', 'assigned_to'],
-//     })
-//     .then((cards) => {
-//       cardList = cards.models;
-//       cards = [];
-
-//       cardList.forEach((card) => {
-//         let relations = card.relations;
-//         const priorities = relations.priorities.attributes;
-//         const statuses = relations.statuses.attributes;
-//         const created_by = relations.created_by.attributes;
-//         const assigned_to = relations.assigned_to.attributes;
-
-//         const cardData = {
-//           id: card.id,
-//           title: card.attributes.title,
-//           body: card.attributes.body,
-//           priorities: priorities.name,
-//           priority_id: priorities.id,
-//           statuses: statuses.name,
-//           status_id: statuses.id,
-//           created_by: created_by.first_name,
-//           created_by_id: created_by.id,
-//           assigned_to: assigned_to.first_name,
-//           assigned_to_id: assigned_to.id,
-//         };
-
-//         cards.push(cardData);
-//       });
-//       res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-//       res.json(cards);
-//     });
-// });
