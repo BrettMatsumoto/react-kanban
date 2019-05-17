@@ -89,12 +89,12 @@ class AddCard extends Component {
   render() {
     return (
       <form>
-        <input type="text" ref={this.titleInputRef} value={this.state.title} onChange={this.handleTitleChange} />
-        <input type="text" value={this.state.body} onChange={this.handleBodyChange} />
-        <input type="text" value={this.state.priority} onChange={this.handlePriorityChange} />
-        <input type="text" value={this.state.status} onChange={this.handleStatusChange} />
-        <input type="text" value={this.state.created_by} onChange={this.handleCreatedChange} />
-        <input type="text" value={this.state.assigned_to} onChange={this.handleAssignedChange} />
+        <input type="text" ref={this.titleInputRef} value={this.state.title} onChange={this.handleTitleChange} placeholder="Title"/>
+        <input type="text" value={this.state.body} onChange={this.handleBodyChange} placeholder="Body"/>
+        <input type="text" value={this.state.priority} onChange={this.handlePriorityChange} placeholder="Priority Code"/>
+        <input type="text" value={this.state.status} onChange={this.handleStatusChange} placeholder="Status Code"/>
+        <input type="text" value={this.state.created_by} onChange={this.handleCreatedChange} placeholder="Created By" />
+        <input type="text" value={this.state.assigned_to} onChange={this.handleAssignedChange} placeholder="Assigned To" />
         <button onClick={this.handleSubmit}>Save Card</button>
       </form>
     );

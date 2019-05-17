@@ -2,6 +2,7 @@ import CardList from '../containers/CardList';
 
 export const ADD_CARD = 'ADD_BOOK';
 export const LOAD_CARDS = 'LOAD_CARDS';
+export const DELETE_CARDS = 'DELETE_CARDS';
 
 export function addCard(newCard) {
   // console.log('newCard:', newCard);
@@ -27,7 +28,7 @@ export function addCard(newCard) {
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   };
 }
 
@@ -46,3 +47,27 @@ export const loadCards = () => {
       });
   };
 };
+
+export function deleteCard(id) {
+  return (dispatch) => {
+    return fetch('./api/cards', {
+      method: 'DELETE',
+      body: JSON.stringify(id),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((body) => {
+        return dispatch({
+          type: DELETE_CARDS,
+          payload: body,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+}

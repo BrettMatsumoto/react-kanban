@@ -1,4 +1,4 @@
-import { ADD_CARD, LOAD_CARDS } from '../actions';
+import { ADD_CARD, LOAD_CARDS, DELETE_CARDS } from '../actions';
 
 const initialState = {
   cards: [],
@@ -11,6 +11,8 @@ function cardReducer(state = initialState, action) {
     case ADD_CARD:
       return Object.assign({}, { cards: [...state.cards, action.payload] });
     case LOAD_CARDS:
+      return Object.assign({}, { cards: [...action.payload] });
+    case DELETE_CARDS:
       return Object.assign({}, { cards: [...action.payload] });
     default:
       return state;
