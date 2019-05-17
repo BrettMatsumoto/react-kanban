@@ -15,7 +15,7 @@ export function addCard(newCard) {
       },
     })
       .then((response) => {
-        // console.log('response: ', response);
+        console.log('response: ', response);
         return response.json();
       })
       .then((body) => {

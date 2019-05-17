@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log('req', req);
+  // console.log('req', req);
   return res.json({
     title: req.body.title,
     body: req.body.body,

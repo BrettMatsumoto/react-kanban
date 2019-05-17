@@ -41,6 +41,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  // console.log('App.js mapStateToProps: ', state) 
   return {
     cards: state.cardReducer.cards,
   };
