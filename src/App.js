@@ -12,7 +12,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      title: 'Stuff',
+      title: 'Mr. Popo with his eyes closed',
     };
   }
 

@@ -85,16 +85,6 @@ passport.deserializeUser(function(user, done) {
   });
 });
 
-// app.get('/', (req, res) => {
-//   // console.log('hi');
-//   // return res.send('hi');
-//   new Card().fetchAll({ withRelated: ['priorities', 'statuses', 'created_by', 'assigned_to'] }).then((results) => {
-//     let resultsObj = results.toJSON();
-
-//     return res.send(resultsObj);
-//   });
-// });
-
 app.use('/api/users', userRoute);
 app.use('/api/priorities', prioritiesRoute);
 app.use('/api/statuses', statusesRoute);

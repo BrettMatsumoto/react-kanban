@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Card from '../../components/Card';
-import './CardList.css';
+import './CardList';
+import './CardListFunctions';
 
 class CardList extends Component {
   constructor(props) {
@@ -10,15 +11,16 @@ class CardList extends Component {
   }
 
   render() {
-
-    const cardList = this.props.cards
-      .map((card, idx) => {
-        return <Card key={idx} title={card.title} body={card.body} />;
-      });
+    const cardList = this.props.cards.map((card, idx) => {
+      return <Card key={idx} title={card.title} body={card.body} />;
+    });
 
     return (
-      <div id='board'>
-        {cardList}
+      <div id="board">
+      {cardList}
+      <div id="Col1">Col1</div>
+        <div id="Col2">Col2</div>
+        <div id="Col3">Col3</div>
       </div>
     );
   }
