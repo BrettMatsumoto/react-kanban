@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import AddCard from './containers/AddCard';
 import CardList from './containers/CardList';
@@ -12,7 +11,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      title: 'Mr. Popo with his eyes closed',
+      title: 'Kanban Board of Death',
     };
   }
 
