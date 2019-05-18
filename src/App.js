@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import AddCard from './containers/AddCard';
+import PutCardForm from './containers/PutCard';
 import CardList from './containers/CardList';
 import CardListTitle from './components/CardListTitle';
 import { connect } from 'react-redux';
@@ -36,7 +37,7 @@ class App extends React.Component {
         </div>
 
         <div className="put-card-form">
-          <PutCard />
+          <PutCardForm />
         </div>
       </div>
     );
