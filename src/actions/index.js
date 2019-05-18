@@ -3,6 +3,7 @@ import CardList from '../containers/CardList';
 export const ADD_CARD = 'ADD_BOOK';
 export const LOAD_CARDS = 'LOAD_CARDS';
 export const DELETE_CARDS = 'DELETE_CARDS';
+export const PUT_CARDS = 'PUT_CARDS';
 
 export function addCard(newCard) {
   // console.log('newCard:', newCard);
@@ -66,4 +67,24 @@ export function deleteCard(id) {
         console.log(err);
       });
   };
+}
+
+export function PutCard(id) {
+  return (dispatch) => {
+    return fetch(`/api/cards/${id}`, {
+      method: 'PUT',
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((body) => {
+      return dispatch({
+        type: PUT_CARDS,
+        payload: body,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
 }

@@ -41,15 +41,26 @@ router.post('/', (req, res) => {
     });
 });
 
-router.get('/:id/edit', (req, res) => {
+router.put('/:id/edit', (req, res) => {
+  const body = req.body;
   new Card()
-    .where({ id: req.params.id })
-    .fetchAll({ withRelated: ['priorities', 'statuses', 'created_by', 'assigned_to'] })
-    .then((results) => {
-      let resultsObj = results.toJSON();
-
-      return res.json(resultsObj);
-    });
+    .where({ id: body.id })
+    .then(() => {
+      new Card({ id: body.id })
+      .save({
+        title: req.body.title,
+        body: req.body.body,
+        priority_id: req.body.priority,
+        status_id: req.body.status,
+        created_by: req.body.created_by,
+        assigned_to: req.body.assigned_to,
+      },
+      { patch: true},
+      )
+      .then(()=> {
+        return res.redirect('/');
+      })
+    })
 });
 
 router.delete('/:id', (req, res) => {
@@ -68,7 +79,5 @@ router.delete('/:id', (req, res) => {
       console.log(err);
     });
 });
-
-
 
 module.exports = router;

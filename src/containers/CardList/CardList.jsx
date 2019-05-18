@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Card from '../../components/Card';
 import './CardList.css';
 import { deleteCard } from '../../actions';
+import { PutCard } from '../../actions';
 
 
 const status1Cards = {
@@ -47,7 +48,7 @@ class CardList extends Component {
             <a href="x" className='showHideButton' role='button'>
               <Card key={idx} title={card.title} body={card.body} status={card.status_id} />
               <button onClick={() => this.props.deleteCard(card.id)}>Delete</button>
-              <button onClick={() => this.props.editCard(card.id)}>Edit</button>
+              <button onClick={() => this.props.PutCard(card.id)}>Edit</button>
             </a>
           </div>
         );
@@ -83,7 +84,8 @@ class CardList extends Component {
     });
 
     return (
-      <div id="board" style={showHide}>
+      // style={this.state.hidden ? hide:show} //update state so that it has a boolean false/true for hidden/shown
+      <div id="board" >
         <div id="Col1">
           <div className="IndividualCard">{cardList1}</div>
         </div>
@@ -94,6 +96,9 @@ class CardList extends Component {
           <div className="IndividualCard">{cardList3}</div>
         </div>
       </div>
+      // <div id='detailed' style={showHide2}>
+
+      // </div>
     );
   }
 }
@@ -103,6 +108,9 @@ const mapDispatchToProps = (dispatch) => {
     deleteCard: (id) => {
       dispatch(deleteCard(id));
     },
+    PutCard: (id) => {
+      dispatch(putCard(id));
+    }
   };
 };
 

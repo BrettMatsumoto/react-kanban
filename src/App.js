@@ -4,7 +4,7 @@ import AddCard from './containers/AddCard';
 import CardList from './containers/CardList';
 import CardListTitle from './components/CardListTitle';
 import { connect } from 'react-redux';
-import { loadCards } from './actions';
+import { loadCards, PutCard } from './actions';
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +33,10 @@ class App extends React.Component {
 
         <div className="add-card-form">
           <AddCard />
+        </div>
+
+        <div className="put-card-form">
+          <PutCard />
         </div>
       </div>
     );
