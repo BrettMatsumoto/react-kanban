@@ -1,58 +1,56 @@
-import React, { Component, createRef } from 'react';
-import { connect } from 'react-redux';
-import { deleteCard } from '../../actions';
+// import React, { Component, createRef } from 'react';
+// import { connect } from 'react-redux';
+// import { deleteCard } from '../../actions';
 
-class deleteCard extends Component {
-  constructor(props) {
-    super(props);
+// class DeleteCard extends Component {
+//   constructor(props) {
+//     super(props);
 
-    this.state = {
-      title: '',
-      body: '',
-      priority: '',
-      status: '',
-      created_by: '',
-      assigned_to: '',
-    };
+//     this.state = {
+//       id: '',
+//       title: '',
+//       body: '',
+//       priority: '',
+//       status: '',
+//       created_by: '',
+//       assigned_to: '',
+//     };
 
-    this.titleInputRef = createRef();
+//     this.titleInputRef = createRef();
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+//     this.handleSubmit = this.handleSubmit.bind(this);
+//   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+//   handleSubmit(e) {
+//     e.preventDefault();
 
-    const { title, body, priority, status, created_by, assigned_to } = this.state;
+//     const { id } = this.state;
 
-    this.props.deleteCard({
-      title,
-      body,
-      priority,
-      status,
-      created_by,
-      assigned_to,
-    });
-  }
+//     this.props.deleteCard({
+//       id
+//     });
+//     console.log('id>>>>>>>',id);
+//   }
 
-  render() {
-    return (
-      <form>
-        <button onClick={this.handleSubmit}>Delete Card</button>
-      </form>
-    );
-  }
-}
+//   render() {
+//     console.log('delete>>>>>',this.props)
+//     return (
+//       <form>
+//         <button onClick={this.handleSubmit}>Delete Card</button>
+//       </form>
+//     );
+//   }
+// }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteCard: (card) => {
-      const deleteCardAction = deleteCard(card);
-      dispatch(deleteCardAction);
-    },
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     deleteCard: (card) => {
+//       const deleteCardAction = deleteCard(card);
+//       dispatch(deleteCardAction);
+//     },
+//   };
+// };
 
-DeleteCard = connect(mapDispatchToProps)(DeleteCard);
+// DeleteCard = connect(null, mapDispatchToProps)(DeleteCard);
 
-export default DeleteCard;
+// export default DeleteCard;

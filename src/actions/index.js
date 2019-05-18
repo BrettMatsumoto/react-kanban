@@ -20,7 +20,7 @@ export function addCard(newCard) {
         return response.json();
       })
       .then((body) => {
-        // console.log('body: ', body);
+        console.log('body: ', body);
         return dispatch({
           type: ADD_CARD,
           payload: body,
@@ -50,12 +50,8 @@ export const loadCards = () => {
 
 export function deleteCard(id) {
   return (dispatch) => {
-    return fetch('./api/cards', {
+    return fetch(`/api/cards/${id}`, {
       method: 'DELETE',
-      body: JSON.stringify(id),
-      headers: {
-        'Content-Type': 'application/json',
-      },
     })
       .then((response) => {
         return response.json();

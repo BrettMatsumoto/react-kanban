@@ -30,23 +30,15 @@ router.post('/', (req, res) => {
       return res.json({
         title: req.body.title,
         body: req.body.body,
+        priority_id: req.body.priority,
+        status_id: req.body.status,
+        created_by: req.body.created_by,
+        assigned_to: req.body.assigned_to,
       });
     })
     .catch((err) => {
       console.log(err);
     });
-  return res.json({
-    title: req.body.title,
-    body: req.body.body,
-    priority: req.body.priority,
-    status: req.body.status,
-    created_by: req.body.created_by,
-    assigned_to: req.body.assigned_to,
-  });
-});
-
-router.get('/new', (req, res) => {
-  return res.send('/api/card/new smoke test');
 });
 
 router.get('/:id/edit', (req, res) => {
@@ -61,24 +53,22 @@ router.get('/:id/edit', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
+  console.log('test********************')
   new Card({
     id: req.params.id,
   })
-    .fetch()
-    .then((card) => {
-      let cardObj = card.toJSON();
-      if (req.user.id === cardObj.created_by) {
-        new Card({
-          id: req.params.id,
-        })
-          .destroy()
-          .then(() => {
-            return res.redirect(`/`);
-          });
-      } else {
-        return res.send('User does not own this Card');
-      }
+    .destroy()
+    .then(() => {
+      new Card().fetchAll().then((results) => {
+        console.log(results);
+        return res.json(results);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
     });
 });
+
+
 
 module.exports = router;

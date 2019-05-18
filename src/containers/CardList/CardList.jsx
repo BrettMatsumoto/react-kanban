@@ -1,32 +1,33 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Card from '../../components/Card';
 import './CardList.css';
+import { deleteCard } from '../../actions';
+
 
 const status1Cards = {
   border: '1px solid black',
   backgroundColor: 'red',
-  marginTop: '10px',
-  marginBottom: '10px',
-  marginRight: '450px',
-  marginLeft: '450px'
-}
+  marginRight: '33%',
+  marginLeft: '33%'
+};
 
 const status2Cards = {
   border: '1px solid black',
   backgroundColor: 'yellow',
-  marginTop: '10px',
-  marginBottom: '10px',
-  marginRight: '450px',
-  marginLeft: '450px'
-}
+  marginRight: '33%',
+  marginLeft: '33%'
+};
 
 const status3Cards = {
   border: '1px solid black',
   backgroundColor: 'green',
-  marginTop: '10px',
-  marginBottom: '10px',
-  marginRight: '450px',
-  marginLeft: '450px'
+  marginRight: '33%',
+  marginLeft: '33%'
+};
+
+const showHide = {
+  display: 'block'
 }
 
 class CardList extends Component {
@@ -37,14 +38,17 @@ class CardList extends Component {
   }
 
   render() {
+    console.log('cardlist>>>', this.props.cards);
     const cardList1 = this.props.cards.map((card, idx) => {
       // console.log(card);
-      if (card.status_id === 1) {
+      if (parseInt(card.status_id) === 1) {
         return (
           <div className="IndividualCard" style={status1Cards}>
-            <Card key={idx} title={card.title} body={card.body} status={card.status_id} />
-            {/* <button onClick={this.handleDelete}>Delete</button>
-            <button onClick={this.handleEdit}>Edit</button> */}
+            <a href="x" className='showHideButton' role='button'>
+              <Card key={idx} title={card.title} body={card.body} status={card.status_id} />
+              <button onClick={() => this.props.deleteCard(card.id)}>Delete</button>
+              <button onClick={() => this.props.editCard(card.id)}>Edit</button>
+            </a>
           </div>
         );
       } else {
@@ -52,12 +56,12 @@ class CardList extends Component {
       }
     });
     const cardList2 = this.props.cards.map((card, idx) => {
-      if (card.status_id === 2) {
+      if (parseInt(card.status_id) === 2) {
         return (
           <div className="IndividualCard" style={status2Cards}>
             <Card key={idx} title={card.title} body={card.body} status={card.status_id} />
-            {/* <button onClick={this.handleDelete}>Delete</button>
-            <button onClick={this.handleEdit}>Edit</button> */}
+            <button onClick={() => this.props.deleteCard(card.id)}>Delete</button>
+            <button onClick={this.handleEdit}>Edit</button>
           </div>
         );
       } else {
@@ -65,12 +69,12 @@ class CardList extends Component {
       }
     });
     const cardList3 = this.props.cards.map((card, idx) => {
-      if (card.status_id === 3) {
+      if (parseInt(card.status_id) === 3) {
         return (
           <div className="IndividualCard" style={status3Cards}>
             <Card key={idx} title={card.title} body={card.body} status={card.status_id} />
-            {/* <button onClick={this.handleDelete}>Delete</button>
-            <button onClick={this.handleEdit}>Edit</button> */}
+            <button onClick={() => this.props.deleteCard(card.id)}>Delete</button>
+            <button onClick={this.handleEdit}>Edit</button>
           </div>
         );
       } else {
@@ -79,7 +83,7 @@ class CardList extends Component {
     });
 
     return (
-      <div id="board">
+      <div id="board" style={showHide}>
         <div id="Col1">
           <div className="IndividualCard">{cardList1}</div>
         </div>
@@ -93,5 +97,18 @@ class CardList extends Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteCard: (id) => {
+      dispatch(deleteCard(id));
+    },
+  };
+};
+
+CardList = connect(
+  null,
+  mapDispatchToProps,
+)(CardList);
 
 export default CardList;
