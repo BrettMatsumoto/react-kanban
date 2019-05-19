@@ -49,7 +49,7 @@ class Card extends Component {
           <button onClick={() => this.toggleShowHide()}>Edit</button>
           <DeleteCard />
           <div style={this.state.hidden === true ? hide : show}>
-            <PutCardForm />
+            <PutCardForm id={id}/>
           </div>
         </div>
       );

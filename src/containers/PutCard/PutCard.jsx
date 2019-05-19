@@ -8,7 +8,7 @@ class PutCardForm extends Component {
     super(props);
 
     this.state = {
-      id: '',
+      id: this.props.id,
       title: '',
       body: '',
       priority: '',
@@ -30,10 +30,12 @@ class PutCardForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    const { title, body, priority, status, created_by, assigned_to } = this.state;
+    
+    const { id, title, body, priority, status, created_by, assigned_to } = this.state;
+    console.log(this.state)
 
     this.props.PutCard({
+      id,
       title,
       body,
       priority,
@@ -99,7 +101,7 @@ class PutCardForm extends Component {
           onChange={this.handleAssignedChange}
           placeholder="Assigned To"
         />
-        <button onClick={this.handleSubmit}>Edit Card</button>
+        <button onClick={this.handleSubmit}>Submit Edit</button>
       </form>
     );
   }

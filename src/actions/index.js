@@ -70,12 +70,18 @@ export function DeleteCard(id) {
 }
 
 export function PutCard(card) {
+  // console.log('*&*&*&*&*&*&*&*&*&*&*&', JSON.stringify(card));
   return (dispatch) => {
     return fetch(`/api/cards/${card.id}`, {
       method: 'PUT',
+      body: JSON.stringify(card),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     })
     .then((response) => {
-      return response.json();
+      console.log('*&*&*&*&*&*&*&*&*&*&*&*&*&',response)
+      return response;
     })
     .then((body) => {
       return dispatch({
@@ -84,7 +90,7 @@ export function PutCard(card) {
       });
     })
     .catch((err) => {
-      console.log(err);
+      console.log('action: ', err);
     })
   }
 }
