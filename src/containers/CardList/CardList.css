@@ -1,6 +1,7 @@
-#board{
+#gallery{
     border: 1px solid black;
     margin: 25px;
-    /* display: flex;
-    flex-direction: row; */
+    display: flex;
+    flex-direction: column; 
+    flex-basis: 33%;
 }

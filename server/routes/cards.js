@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/:id/edit', (req, res) => {
+router.put('/:id', (req, res) => {
   const body = req.body;
   new Card()
     .where({ id: body.id })
@@ -64,14 +64,13 @@ router.put('/:id/edit', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  console.log('test********************')
   new Card({
     id: req.params.id,
   })
     .destroy()
     .then(() => {
       new Card().fetchAll().then((results) => {
-        console.log(results);
+        // console.log(results);
         return res.json(results);
       });
     })

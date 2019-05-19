@@ -35,10 +35,6 @@ class App extends React.Component {
         <div className="add-card-form">
           <AddCard />
         </div>
-
-        <div className="put-card-form">
-          <PutCardForm />
-        </div>
       </div>
     );
   }

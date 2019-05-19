@@ -1,12 +1,14 @@
 import React, { Component, createRef } from 'react';
 import { connect } from 'react-redux';
 import { PutCard } from '../../actions';
+import { CardList } from '../CardList';
 
 class PutCardForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      id: '',
       title: '',
       body: '',
       priority: '',
@@ -40,15 +42,6 @@ class PutCardForm extends Component {
       assigned_to,
     });
 
-    this.setState({
-      title: '',
-      body: '',
-      priority: '',
-      status: '',
-      created_by: '',
-      assigned_to: '',
-    });
-
     this.titleInputRef.current.focus();
   }
 
@@ -63,7 +56,7 @@ class PutCardForm extends Component {
 
   handleBodyChange(e) {
     const { value } = e.target;
-    this.setState({ priority: value });
+    this.setState({ body: value });
   }
 
   handlePriorityChange(e) {
@@ -73,22 +66,22 @@ class PutCardForm extends Component {
 
   handleStatusChange(e) {
     const { value } = e.target;
-    this.setState({ priority: value });
+    this.setState({ status: value });
   }
 
   handleCreatedChange(e) {
     const { value } = e.target;
-    this.setState({ priority: value });
+    this.setState({ created_by: value });
   }
 
   handleAssignedChange(e) {
     const { value } = e.target;
-    this.setState({ priority: value });
+    this.setState({ assigned_to: value });
   }
 
   render() {
     return (
-      <form>
+    <form>
         <input
           type="text"
           ref={this.titleInputRef}

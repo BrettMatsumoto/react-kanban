@@ -95,7 +95,7 @@ class AddCard extends Component {
         <input type="text" value={this.state.status} onChange={this.handleStatusChange} placeholder="Status Code"/>
         <input type="text" value={this.state.created_by} onChange={this.handleCreatedChange} placeholder="Created By" />
         <input type="text" value={this.state.assigned_to} onChange={this.handleAssignedChange} placeholder="Assigned To" />
-        <button onClick={this.handleSubmit}>Save Card</button>
+        <button onClick={this.handleSubmit}>Save New Card</button>
       </form>
     );
   }

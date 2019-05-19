@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from '../../components/Card';
 import './CardList.css';
-import { deleteCard } from '../../actions';
-import { PutCard } from '../../actions';
+// import { deleteCard } from '../../actions';
+// import { PutCard } from '../../actions';
 
 const status1Cards = {
   border: '1px solid black',
@@ -26,47 +26,56 @@ const status3Cards = {
   marginLeft: '33%',
 };
 
+const detailedCardCSS = {};
+
 class CardList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {hidden: true};
-
+    this.state = { hidden: true, id: 0 };
     this.toggleShowHide = this.toggleShowHide.bind(this);
   }
 
-  toggleShowHide () {
+  toggleShowHide() {
     if (this.state.hidden === true) {
       this.setState({
-        hidden: false
-      })
+        hidden: false,
+      });
     } else {
       this.setState({
-        hidden: true
-      })
+        hidden: true,
+      });
     }
   }
 
   render() {
     const show = {
-      display: 'block'
-    }
+      display: 'block',
+    };
 
     const hide = {
-      display: 'none'
-    }
+      display: 'none',
+    };
 
-    console.log('cardlist>>>', this.props.cards);
+    console.log('++++++++++++++++', this.props);
+    // console.log('cardlist>>>', this.props.cards);
     const cardList1 = this.props.cards.map((card, idx) => {
-      // console.log(card);
+      console.log('+++++++++++++++++++++++++', card);
       if (parseInt(card.status_id) === 1) {
         return (
           <div className="IndividualCard" style={status1Cards}>
-            <button href="" className="showHideButton" role="button" onClick={this.toggleShowHide}>
-              <Card key={idx} title={card.title} body={card.body} status={card.status_id} />
-              <button onClick={() => this.props.deleteCard(card.id)}>Delete</button>
-              <button onClick={() => this.props.PutCard(card.id)}>Edit</button>
-            </button>
+            <div href={idx} className="showHideButton" role="button">
+              <Card
+                key={idx}
+                id={card.id}
+                title={card.title}
+                body={card.body}
+                priority={card.priorities}
+                status={card.statuses.name}
+                createdBy={card.created_by}
+                assignedTo={card.assigned_to}
+              />
+            </div>
           </div>
         );
       } else {
@@ -77,9 +86,20 @@ class CardList extends Component {
       if (parseInt(card.status_id) === 2) {
         return (
           <div className="IndividualCard" style={status2Cards}>
-            <Card key={idx} title={card.title} body={card.body} status={card.status_id} />
-            <button onClick={() => this.props.deleteCard(card.id)}>Delete</button>
-            <button onClick={this.handleEdit}>Edit</button>
+            <div href="" cardName="showHidebutton" role="button" onClick={this.toggleShowHide}>
+              <Card
+                key={idx}
+                id={card.id}
+                title={card.title}
+                body={card.body}
+                priority={card.priority_id}
+                status={card.status_id}
+                createdBy={card.created_by}
+                assignedTo={card.assigned_to}
+              />
+              {/* <button onClick={() => this.props.deleteCard(card.id)}>Delete</button>
+              <button onClick={() => this.props.PutCard(card)}>Edit</button> */}
+            </div>
           </div>
         );
       } else {
@@ -90,9 +110,20 @@ class CardList extends Component {
       if (parseInt(card.status_id) === 3) {
         return (
           <div className="IndividualCard" style={status3Cards}>
-            <Card key={idx} title={card.title} body={card.body} status={card.status_id} />
-            <button onClick={() => this.props.deleteCard(card.id)}>Delete</button>
-            <button onClick={this.handleEdit}>Edit</button>
+            <div href="" cardName="showHidebutton" role="button" onClick={this.toggleShowHide}>
+              <Card
+                key={idx}
+                id={card.id}
+                title={card.title}
+                body={card.body}
+                priority={card.priority_id}
+                status={card.status_id}
+                createdBy={card.created_by}
+                assignedTo={card.assigned_to}
+              />
+              {/* <button onClick={() => this.props.deleteCard(card.id)}>Delete</button>
+              <button onClick={() => this.props.PutCard(card.id)}>Edit</button> */}
+            </div>
           </div>
         );
       } else {
@@ -100,10 +131,14 @@ class CardList extends Component {
       }
     });
 
+    //button sets state to current card id for edit form
+    //find returns true/false
+    //how do i know which card am i trying to edit
+
     return (
       // style={this.state.hidden ? hide:show} //update state so that it has a boolean false/true for hidden/shown
       <div id="board">
-        <div id="gallery" style={this.state.hidden ? show:hide}x>
+        <div id="gallery">
           <div id="Col1">
             <div className="IndividualCard">{cardList1}</div>
           </div>
@@ -114,9 +149,13 @@ class CardList extends Component {
             <div className="IndividualCard">{cardList3}</div>
           </div>
         </div>
-        <div id="detailed" style={this.state.hidden ? hide:show}>
+        <div />
+        {/* <div id="detailed" style={this.state.hidden === true ? hide : show}>
+          <button id="goBackButton" style={this.state.hidden ? hide : show}>
+            Go Back
+          </button>
           <div id="detailed-far-left">
-            <div className="IndividualCard">Test</div>
+            <div className="IndividualCard" />
           </div>
           <div id="detailed-center">
             <div className="IndividualCard">Test</div>
@@ -124,26 +163,10 @@ class CardList extends Component {
           <div id="detailed-far-right">
             <div className="IndividualCard">Test</div>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
 }
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteCard: (id) => {
-      dispatch(deleteCard(id));
-    },
-    PutCard: (id) => {
-      dispatch(PutCard(id));
-    },
-  };
-};
-
-CardList = connect(
-  null,
-  mapDispatchToProps,
-)(CardList);
 
 export default CardList;
