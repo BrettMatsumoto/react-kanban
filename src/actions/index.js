@@ -6,9 +6,7 @@ export const DELETE_CARDS = 'DELETE_CARDS';
 export const PUT_CARDS = 'PUT_CARDS';
 
 export function addCard(newCard) {
-  // console.log('newCard:', newCard);
   return (dispatch) => {
-    // console.log('dispatch: ', dispatch);
     return fetch('/api/cards', {
       method: 'POST',
       body: JSON.stringify(newCard),
@@ -17,11 +15,9 @@ export function addCard(newCard) {
       },
     })
       .then((response) => {
-        // console.log('response: ', response);
         return response.json();
       })
       .then((body) => {
-        // console.log('body: ', body);
         return dispatch({
           type: ADD_CARD,
           payload: body,
@@ -37,7 +33,6 @@ export const loadCards = () => {
   return (dispatch) => {
     return fetch('/api/cards')
       .then((response) => {
-        // console.log(response);
         return response.json();
       })
       .then((cards) => {
@@ -70,7 +65,6 @@ export function DeleteCard(id) {
 }
 
 export function PutCard(card) {
-  // console.log('*&*&*&*&*&*&*&*&*&*&*&', JSON.stringify(card));
   return (dispatch) => {
     return fetch(`/api/cards/${card.id}`, {
       method: 'PUT',
@@ -80,7 +74,6 @@ export function PutCard(card) {
       },
     })
     .then((response) => {
-      console.log('*&*&*&*&*&*&*&*&*&*&*&*&*&',response)
       return response;
     })
     .then((body) => {

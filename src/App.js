@@ -17,7 +17,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(this.props);
     return this.props.loadCards();
   }
 
@@ -40,8 +39,7 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  // console.log('App.js mapStateToProps: ', state) 
+const mapStateToProps = (state) => { 
   return {
     cards: state.cardReducer.cards,
   };

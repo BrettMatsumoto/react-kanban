@@ -69,7 +69,6 @@ router.delete('/:id', (req, res) => {
     .destroy()
     .then(() => {
       new Card().fetchAll().then((results) => {
-        // console.log(results);
         return res.json(results);
       });
     })

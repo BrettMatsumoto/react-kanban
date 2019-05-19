@@ -58,10 +58,7 @@ class CardList extends Component {
       display: 'none',
     };
 
-    // console.log('++++++++++++++++', this.props);
-    // console.log('cardlist>>>', this.props.cards);
     const cardList1 = this.props.cards.map((card, idx) => {
-      // console.log('+++++++++++++++++++++++++', card);
       if (parseInt(card.status_id) === 1) {
         return (
           <div className="IndividualCard" style={status1Cards}>
@@ -98,8 +95,6 @@ class CardList extends Component {
                 createdBy={card.created_by}
                 assignedTo={card.assigned_to}
               />
-              {/* <button onClick={() => this.props.deleteCard(card.id)}>Delete</button>
-              <button onClick={() => this.props.PutCard(card)}>Edit</button> */}
             </div>
           </div>
         );
@@ -122,8 +117,6 @@ class CardList extends Component {
                 createdBy={card.created_by}
                 assignedTo={card.assigned_to}
               />
-              {/* <button onClick={() => this.props.deleteCard(card.id)}>Delete</button>
-              <button onClick={() => this.props.PutCard(card.id)}>Edit</button> */}
             </div>
           </div>
         );
@@ -132,12 +125,7 @@ class CardList extends Component {
       }
     });
 
-    //button sets state to current card id for edit form
-    //find returns true/false
-    //how do i know which card am i trying to edit
-
     return (
-      // style={this.state.hidden ? hide:show} //update state so that it has a boolean false/true for hidden/shown
       <div id="board">
         <div id="gallery">
           <div id="Col1">
@@ -153,21 +141,6 @@ class CardList extends Component {
             <PutCardForm />
           </div>
         </div>
-        <div />
-        {/* <div id="detailed" style={this.state.hidden === true ? hide : show}>
-          <button id="goBackButton" style={this.state.hidden ? hide : show}>
-            Go Back
-          </button>
-          <div id="detailed-far-left">
-            <div className="IndividualCard" />
-          </div>
-          <div id="detailed-center">
-            <div className="IndividualCard">Test</div>
-          </div>
-          <div id="detailed-far-right">
-            <div className="IndividualCard">Test</div>
-          </div>
-        </div> */}
       </div>
     );
   }
