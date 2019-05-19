@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import PutCardForm from '../../containers/PutCard';
+// import PutCardForm from '../../containers/PutCard';
 import { connect } from 'react-redux';
+import PutCardForm from '../../containers/PutCard';
 import { DeleteCard, PutCard } from '../../actions';
 
 class Card extends Component {
@@ -48,7 +49,7 @@ class Card extends Component {
           <button onClick={() => this.toggleShowHide()}>Edit</button>
           <DeleteCard />
           <div style={this.state.hidden === true ? hide : show}>
-            <PutCard />
+            <PutCardForm />
           </div>
         </div>
       );

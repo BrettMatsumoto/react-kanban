@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from '../../components/Card';
 import './CardList.css';
+import PutCardForm from '../../containers/PutCard';
 // import { deleteCard } from '../../actions';
-// import { PutCard } from '../../actions';
+import { PutCard } from '../../actions';
 
 const status1Cards = {
   border: '1px solid black',
@@ -57,10 +58,10 @@ class CardList extends Component {
       display: 'none',
     };
 
-    console.log('++++++++++++++++', this.props);
+    // console.log('++++++++++++++++', this.props);
     // console.log('cardlist>>>', this.props.cards);
     const cardList1 = this.props.cards.map((card, idx) => {
-      console.log('+++++++++++++++++++++++++', card);
+      // console.log('+++++++++++++++++++++++++', card);
       if (parseInt(card.status_id) === 1) {
         return (
           <div className="IndividualCard" style={status1Cards}>
@@ -147,6 +148,9 @@ class CardList extends Component {
           </div>
           <div id="Col3">
             <div className="IndividualCard">{cardList3}</div>
+          </div>
+          <div style={this.state.hidden === true ? hide : show}>
+            <PutCardForm />
           </div>
         </div>
         <div />

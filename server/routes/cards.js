@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id/edit', (req, res) => {
   const body = req.body;
   new Card()
     .where({ id: body.id })
