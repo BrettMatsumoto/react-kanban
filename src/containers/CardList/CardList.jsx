@@ -3,31 +3,33 @@ import { connect } from 'react-redux';
 import Card from '../../components/Card';
 import './CardList.css';
 import PutCardForm from '../../containers/PutCard';
-// import { deleteCard } from '../../actions';
-import { PutCard } from '../../actions';
 
 const status1Cards = {
   border: '1px solid black',
   backgroundColor: 'red',
-  marginRight: '33%',
-  marginLeft: '33%',
+  width: '80%',
+  marginBottom: '1em',
+  marginLeft: '1em'
 };
 
 const status2Cards = {
   border: '1px solid black',
   backgroundColor: 'yellow',
-  marginRight: '33%',
-  marginLeft: '33%',
+  width: '80%',
+  marginBottom: '1em',
 };
 
 const status3Cards = {
   border: '1px solid black',
   backgroundColor: 'green',
-  marginRight: '33%',
-  marginLeft: '33%',
+  width: '80%',
+  marginBottom: '1em',
+  marginRight: '1em',
 };
 
-const detailedCardCSS = {};
+const colStyle = {
+  width: '33%',
+}
 
 class CardList extends Component {
   constructor(props) {
@@ -62,14 +64,14 @@ class CardList extends Component {
       if (parseInt(card.status_id) === 1) {
         return (
           <div className="IndividualCard" style={status1Cards}>
-            <div href={idx} className="showHideButton" role="button">
+            <div href={idx} className="showHideButton">
               <Card
                 key={idx}
                 id={card.id}
                 title={card.title}
                 body={card.body}
-                priority={card.priorities}
-                status={card.statuses.name}
+                priority={card.priority_id}
+                status={card.status_id}
                 createdBy={card.created_by}
                 assignedTo={card.assigned_to}
               />
@@ -128,17 +130,14 @@ class CardList extends Component {
     return (
       <div id="board">
         <div id="gallery">
-          <div id="Col1">
+          <div id="Col1" style={colStyle}>
             <div className="IndividualCard">{cardList1}</div>
           </div>
-          <div id="Col2">
+          <div id="Col2" style={colStyle}>
             <div className="IndividualCard">{cardList2}</div>
           </div>
-          <div id="Col3">
+          <div id="Col3" style={colStyle}>
             <div className="IndividualCard">{cardList3}</div>
-          </div>
-          <div style={this.state.hidden === true ? hide : show}>
-            <PutCardForm />
           </div>
         </div>
       </div>

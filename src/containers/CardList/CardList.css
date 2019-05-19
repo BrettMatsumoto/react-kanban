@@ -2,6 +2,9 @@
     border: 1px solid black;
     margin: 25px;
     display: flex;
-    flex-direction: column; 
+    columns: 2;
     flex-basis: 33%;
+    justify-content: space-around;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }

@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
 import AddCard from './containers/AddCard';
-import PutCardForm from './containers/PutCard';
 import CardList from './containers/CardList';
 import CardListTitle from './components/CardListTitle';
 import { connect } from 'react-redux';
-import { loadCards, PutCard } from './actions';
+import { loadCards } from './actions';
+
+const addFormStyle = {
+  paddingTop: '15px',
+};
 
 class App extends React.Component {
   constructor(props) {
@@ -27,19 +30,21 @@ class App extends React.Component {
           <CardListTitle title={this.state.title} />
         </header>
 
-        <div className="cardlist-container">
-          <CardList cards={this.props.cards} />
+        <div id="addFormHolder" style={addFormStyle}>
+          <div className="add-card-form" style={addFormStyle}>
+            <AddCard />
+          </div>
         </div>
 
-        <div className="add-card-form">
-          <AddCard />
+        <div className="cardlist-container">
+          <CardList cards={this.props.cards} />
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => { 
+const mapStateToProps = (state) => {
   return {
     cards: state.cardReducer.cards,
   };
