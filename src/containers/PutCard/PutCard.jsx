@@ -32,7 +32,6 @@ class PutCardForm extends Component {
     e.preventDefault();
     
     const { id, title, body, priority, status, created_by, assigned_to } = this.state;
-    console.log(this.state)
 
     this.props.PutCard({
       id,

@@ -83,7 +83,7 @@ export function PutCard(card) {
       });
     })
     .catch((err) => {
-      console.log('action: ', err);
+      console.log(err);
     })
   }
 }

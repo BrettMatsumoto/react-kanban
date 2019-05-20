@@ -52,15 +52,8 @@ class CardList extends Component {
   }
 
   render() {
-    const show = {
-      display: 'block',
-    };
-
-    const hide = {
-      display: 'none',
-    };
-
     const cardList1 = this.props.cards.map((card, idx) => {
+      console.log('&*&*&*&*',card)
       if (parseInt(card.status_id) === 1) {
         return (
           <div className="IndividualCard" style={status1Cards}>
@@ -70,8 +63,8 @@ class CardList extends Component {
                 id={card.id}
                 title={card.title}
                 body={card.body}
-                priority={card.priority_id}
-                status={card.status_id}
+                priority={card.priorities}
+                status={card.statuses}
                 createdBy={card.created_by}
                 assignedTo={card.assigned_to}
               />
@@ -86,14 +79,14 @@ class CardList extends Component {
       if (parseInt(card.status_id) === 2) {
         return (
           <div className="IndividualCard" style={status2Cards}>
-            <div href="" cardName="showHidebutton" role="button" onClick={this.toggleShowHide}>
+            <div href="" cardName="showHidebutton">
               <Card
                 key={idx}
                 id={card.id}
                 title={card.title}
                 body={card.body}
-                priority={card.priority_id}
-                status={card.status_id}
+                priority={card.priorities}
+                status={card.statuses}
                 createdBy={card.created_by}
                 assignedTo={card.assigned_to}
               />
@@ -108,14 +101,14 @@ class CardList extends Component {
       if (parseInt(card.status_id) === 3) {
         return (
           <div className="IndividualCard" style={status3Cards}>
-            <div href="" cardName="showHidebutton" role="button" onClick={this.toggleShowHide}>
+            <div href="" cardName="showHidebutton">
               <Card
                 key={idx}
                 id={card.id}
                 title={card.title}
                 body={card.body}
-                priority={card.priority_id}
-                status={card.status_id}
+                priority={card.priorities}
+                status={card.statuses}
                 createdBy={card.created_by}
                 assignedTo={card.assigned_to}
               />

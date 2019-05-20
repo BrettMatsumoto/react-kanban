@@ -34,15 +34,13 @@ class Card extends Component {
     };
 
     const { id, title, body, priority, status, createdBy, assignedTo } = this.props;
-    console.log('********************props', this.props)
-
       return (
         <div className="card">
           <div>ID: {id}</div>
           <div>Title: {title}</div>
           <div>Body: {body}</div>
           <div>Priority: {priority.name}</div>
-          <div>Status: {status}</div>
+          <div>Status: {status.name}</div>
           <div>Created By: {createdBy.first_name} {createdBy.last_name}</div>
           <div>Assigned To: {assignedTo.first_name} {assignedTo.last_name}</div>
           <button onClick={() => this.props.DeleteCard(id)}>Delete</button>

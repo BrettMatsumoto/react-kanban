@@ -60,6 +60,9 @@ router.put('/:id', (req, res) => {
       return res.json(resultsObj);
     })
   })
+  .catch((err) => {
+    console.log(err);
+  })
 });
 
 router.delete('/:id', (req, res) => {
