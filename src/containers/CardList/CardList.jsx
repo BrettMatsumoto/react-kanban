@@ -50,7 +50,6 @@ class CardList extends Component {
 
   render() {
     const cardList1 = this.props.cards.map((card, idx) => {
-      console.log('&*&*&*&*',card)
       if (parseInt(card.status_id) === 1) {
         return (
           <div style={status1Cards}>
@@ -121,13 +120,13 @@ class CardList extends Component {
       <div id="board">
         <div id="gallery">
           <div id="Col1" style={colStyle}>
-            <div>{cardList1}</div>
+            <div >{cardList1}</div>
           </div>
           <div id="Col2" style={colStyle}>
-            <div>{cardList2}</div>
+            <div >{cardList2}</div>
           </div>
           <div id="Col3" style={colStyle}>
-            <div>{cardList3}</div>
+            <div >{cardList3}</div>
           </div>
         </div>
       </div>
