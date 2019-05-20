@@ -1,14 +1,19 @@
-#gallery{
-    border: 1px solid black;
-    margin: 25px;
-    display: flex;
-    columns: 2;
-    flex-basis: 33%;
-    justify-content: space-around;
-    padding-top: 15px;
-    padding-bottom: 15px;
+#gallery {
+  border: 1px solid black;
+  margin: 25px;
+  display: flex;
+  columns: 2;
+  flex-basis: 33%;
+  justify-content: space-around;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: whitesmoke;
 }
 
 .IndividualCard:hover {
-    border: 3px solid black;
+  border: 3px solid black;
+}
+
+body {
+  background-image: url('../../resources/background/dark-honeycomb.png');
 }
