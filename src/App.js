@@ -15,7 +15,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      title: 'Kanban Board of Death',
+      title: 'Kanban Board of Death-Kwon-Do',
     };
   }
 
