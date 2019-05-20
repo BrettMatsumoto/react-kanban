@@ -5,7 +5,6 @@ import './CardList.css';
 import PutCardForm from '../../containers/PutCard';
 
 const status1Cards = {
-  border: '1px solid black',
   backgroundColor: 'red',
   width: '80%',
   marginBottom: '1em',
@@ -13,14 +12,12 @@ const status1Cards = {
 };
 
 const status2Cards = {
-  border: '1px solid black',
   backgroundColor: 'yellow',
   width: '80%',
   marginBottom: '1em',
 };
 
 const status3Cards = {
-  border: '1px solid black',
   backgroundColor: 'green',
   width: '80%',
   marginBottom: '1em',
@@ -56,8 +53,8 @@ class CardList extends Component {
       console.log('&*&*&*&*',card)
       if (parseInt(card.status_id) === 1) {
         return (
-          <div className="IndividualCard" style={status1Cards}>
-            <div href={idx} className="showHideButton">
+          <div style={status1Cards}>
+            <div href={idx} className="IndividualCard">
               <Card
                 key={idx}
                 id={card.id}
@@ -78,8 +75,8 @@ class CardList extends Component {
     const cardList2 = this.props.cards.map((card, idx) => {
       if (parseInt(card.status_id) === 2) {
         return (
-          <div className="IndividualCard" style={status2Cards}>
-            <div href="" cardName="showHidebutton">
+          <div style={status2Cards}>
+            <div href={idx} className="IndividualCard">
               <Card
                 key={idx}
                 id={card.id}
@@ -100,8 +97,8 @@ class CardList extends Component {
     const cardList3 = this.props.cards.map((card, idx) => {
       if (parseInt(card.status_id) === 3) {
         return (
-          <div className="IndividualCard" style={status3Cards}>
-            <div href="" cardName="showHidebutton">
+          <div style={status3Cards}>
+            <div href={idx} className="IndividualCard">
               <Card
                 key={idx}
                 id={card.id}
@@ -124,13 +121,13 @@ class CardList extends Component {
       <div id="board">
         <div id="gallery">
           <div id="Col1" style={colStyle}>
-            <div className="IndividualCard">{cardList1}</div>
+            <div>{cardList1}</div>
           </div>
           <div id="Col2" style={colStyle}>
-            <div className="IndividualCard">{cardList2}</div>
+            <div>{cardList2}</div>
           </div>
           <div id="Col3" style={colStyle}>
-            <div className="IndividualCard">{cardList3}</div>
+            <div>{cardList3}</div>
           </div>
         </div>
       </div>

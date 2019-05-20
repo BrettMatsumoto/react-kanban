@@ -8,3 +8,7 @@
     padding-top: 15px;
     padding-bottom: 15px;
 }
+
+.IndividualCard:hover {
+    border: 3px solid black;
+}
