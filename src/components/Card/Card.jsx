@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PutCardForm from '../../containers/PutCard';
 import { connect } from 'react-redux';
 import PutCardForm from '../../containers/PutCard';
 import { DeleteCard, PutCard } from '../../actions';
